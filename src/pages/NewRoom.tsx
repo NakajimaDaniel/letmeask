@@ -3,16 +3,14 @@ import {Link} from 'react-router-dom'
 
 import illustrationImg from '../assets/illustration.svg'
 import logoImg from '../assets/logo.svg'
-import googleImg from '../assets/google-icon.svg'
 import '../styles/auth.scss'
 import { Button } from '../components/Button'
-import { useContext } from 'react'
-import { AuthContext } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 
 
 export function NewRoom() {
 
-  // const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
 
   return (
