@@ -32,23 +32,27 @@ function App() {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+    if (user) {
    
-          const { displayName, photoURL, uid } = user
+      const { displayName, photoURL, uid } = user
   
-          if (!displayName || !photoURL) {
-            throw new Error ('Missing information from Google Account.');
-          }
-  
-          setUser({
-            id: uid,
-            name: displayName,
-            avatar: photoURL, 
-          })
-
+      if (!displayName || !photoURL) {
+        throw new Error ('Missing information from Google Account.');
       }
+  
+      setUser({
+        id: uid,
+        name: displayName,
+        avatar: photoURL, 
+      })
+    }
     })
+
+    return () => {
+      unsubscribe();
+    }
+
   }, [])
 
   async function signInWithGoogle() {
