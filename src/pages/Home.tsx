@@ -8,19 +8,19 @@ import logoImg from '../assets/logo.svg'
 import googleImg from '../assets/google-icon.svg'
 import '../styles/auth.scss'
 import { Button } from '../components/Button'
+import { useContext } from 'react'
+import { AuthContext } from '../App'
 
 export function Home() {
 
   const history = useHistory();
+  const { user, signInWithGoogle } = useContext(AuthContext)
 
-
-  function handleCreateRoom() {
-
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase.auth()
-    .signInWithPopup(provider)
-    .then(result=> {console.log(result)})
+  async function handleCreateRoom() {
+  
+    if (!user) {
+      await signInWithGoogle();
+    }
 
     history.push('/rooms/new');
   }
