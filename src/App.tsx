@@ -5,7 +5,7 @@ import { NewRoom } from './pages/NewRoom';
 import { Home } from './pages/Home';
 
 import { createContext } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 
 
 import { AuthContext, AuthContextProvider } from './contexts/AuthContext'
+import { Room } from './pages/Room';
 
 
 
@@ -24,9 +25,12 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
-        <Route path="/" exact component={Home} /> 
-        <Route path="/rooms/new" component={NewRoom} /> 
-        <Route path="/rooms/new" component={NewRoom} /> 
+        <Switch>
+          <Route path="/" exact component={Home} /> 
+          <Route path="/rooms/new" component={NewRoom} /> 
+          <Route path="/rooms/:id" component={Room} /> 
+        </Switch>
+
       </AuthContextProvider>
 
 
