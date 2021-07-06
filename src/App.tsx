@@ -1,18 +1,13 @@
-import {auth, firebase} from '../src/services/firebase'
 
-import React from 'react';
 import { NewRoom } from './pages/NewRoom';
 import { Home } from './pages/Home';
 
-import { createContext } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 
 
 
-import { AuthContext, AuthContextProvider } from './contexts/AuthContext'
+import { AuthContextProvider } from './contexts/AuthContext'
 import { Room } from './pages/Room';
 import { AdminRoom } from './pages/AdminRoom';
 
