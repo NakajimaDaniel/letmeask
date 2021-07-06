@@ -1,7 +1,8 @@
 
 import { FormEvent, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
+import deleteImg from '../assets/delete.svg'
 import LogoImg from '../assets/logo.svg'
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
@@ -20,6 +21,7 @@ type roomParams = {
 
 export function AdminRoom() {
 
+  const history = useHistory();
   const { user } = useAuth();
   const params = useParams<roomParams>();
   const roomId = params.id;
@@ -27,6 +29,21 @@ export function AdminRoom() {
   const { title, questions } = useRoom(roomId);
 
 
+  async function handleEndRoom() {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
+
+    history.push('/');
+  }
+  
+
+  async function handleDeleteQuestion(questionId: string) {
+    if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+
+    }
+  }
 
   return (
     <div id="page-room">
@@ -35,7 +52,7 @@ export function AdminRoom() {
           <img src={LogoImg} alt="letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button isOutlined onClick={() => handleEndRoom()} >Encerrar sala</Button>
           </div>
         </div>
       </header>
@@ -50,7 +67,11 @@ export function AdminRoom() {
         <div className="question-list">
           {questions.map(question => {
             return (
-              <Question key={question.id} content={question.content} author={question.author} /> 
+              <Question key={question.id} content={question.content} author={question.author}>
+                <button type="button" onClick={() => handleDeleteQuestion(question.id)} >
+                  <img src={deleteImg} alt="delete image" />
+                </button>
+              </Question> 
             )
           })}
         </div>
