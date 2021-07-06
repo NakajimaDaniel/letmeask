@@ -37,13 +37,13 @@ export function NewRoom() {
   return (
     <div id="page-auth">
       <aside>
-        <img src={illustrationImg} ></img>
+        <img src={illustrationImg} alt="side image illustration"/> 
         <strong>Crie salas ao vivo</strong>
         <p>Tire as duvidas em tempo real</p>
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg}></img>
+          <img src={logoImg} alt="logo image" />
           <h2>Criar nova sala</h2>
 
           <form onSubmit={handleCreateRoom}>
