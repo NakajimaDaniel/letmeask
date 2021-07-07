@@ -4,6 +4,9 @@ import { useHistory, useParams } from 'react-router-dom'
 
 import deleteImg from '../assets/delete.svg'
 import LogoImg from '../assets/logo.svg'
+import checkImg from '../assets/check.svg'
+import answerImg from '../assets/answer.svg'
+
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
@@ -37,6 +40,17 @@ export function AdminRoom() {
     history.push('/');
   }
   
+  async function handleCheckQuestionasAnswered(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    });
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true,
+    });
+  }
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
@@ -67,7 +81,19 @@ export function AdminRoom() {
         <div className="question-list">
           {questions.map(question => {
             return (
-              <Question key={question.id} content={question.content} author={question.author}>
+              <Question key={question.id} content={question.content} author={question.author} isAnswered={question.isAnswered} isHighlighted={question.isHighlighted} >
+
+                {!question.isAnswered && (
+                  <>
+                    <button type="button" onClick={() => handleCheckQuestionasAnswered(question.id)} >
+                      <img src={checkImg} alt="marcar pergunta respondida" />
+                    </button>
+                                    
+                    <button type="button" onClick={() => handleHighlightQuestion(question.id)} >
+                      <img src={answerImg} alt="dar destaque a pergunta" />
+                    </button>
+                  </>
+                )}
                 <button type="button" onClick={() => handleDeleteQuestion(question.id)} >
                   <img src={deleteImg} alt="delete image" />
                 </button>
