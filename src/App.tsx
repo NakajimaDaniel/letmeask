@@ -11,7 +11,7 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { Room } from './pages/Room';
 import { AdminRoom } from './pages/AdminRoom';
 
-
+import "tailwindcss/tailwind.css"
 
 
 function App() {
