@@ -25,3 +25,5 @@
  - ESlint, prettier
 
  - pt-br -> en
+
+  - Dark/light mode
