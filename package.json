@@ -1,6 +1,6 @@
 {
   "name": "letmeask",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.2.0",
@@ -25,7 +25,6 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -48,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss-pseudo-elements": "^2.0.0"
   }
 }
