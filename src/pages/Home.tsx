@@ -76,18 +76,28 @@ export function Home() {
     // </div>
 
     <div className="flex items-center justify-center h-screen">
-      <div className="flex w-full max-w-sm flex-col mr-5 ml-5">
+      <div className="flex w-full max-w-sm flex-col">
         <img src={logoImg}  className="mx-auto" /> 
         <button 
           onClick={handleCreateRoom} 
-          className="flex content-center items-center bg-red text-white pt-3 pb-3 pl-10 pr-10 mt-10 font-medium mx-auto rounded-md cursor-pointer  hover:bg-purple brightness-90 transition duration-400" 
+          className="flex content-center items-center bg-red text-white pt-3 pb-3 pl-20 pr-20 mt-10 font-medium mx-auto rounded-md cursor-pointer  hover:bg-purple brightness-90 transition duration-400" 
         >
           <img src={googleImg} alt="google icon" className="flex pr-2" />
           Login with Google
         </button> 
-        <div className=" flex items-center  mt-5 mx-auto text-gray after:h-1 after:bg-purple after:empty-content" >
+        <div className=" flex items-center  mt-5 mx-auto text-gray mb-6" >
           or enter a room
-        </div>      
+        </div>
+        <form onSubmit={handlejoinRoom} className="flex content-center items-center justify-center " >
+        <input 
+          type="text" 
+          placeholder="enter room code"
+          onChange = {(event) => setRoomCode(event.target.value)}
+          value={roomCode}
+          className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray w-10/12"
+        />
+          {/* <Button type="submit"> entrar na sala </Button> */}
+        </form>
       </div>
     </div>
 
