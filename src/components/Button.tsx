@@ -12,7 +12,7 @@ export function Button({ isOutlined = false, ...props }: ButtonProps) {
     // <button className={`button ${isOutlined ? 'outlined' : ''}`} {...props} /> 
 
 
-    <button  className={ " flex items-center rounded-md justify-center bg-purple text-white pl-5 pr-5 w-10/12 h-10" }  {...props} /> 
+    <button  className={ " flex items-center rounded-md justify-center bg-purple text-white pl-5 pr-5 w-10/12 h-10 max-w-sm" }  {...props} /> 
 
   )
 }
