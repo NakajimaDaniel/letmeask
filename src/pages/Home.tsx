@@ -7,6 +7,7 @@ import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
 import  logoImg  from '../assets/logo.svg'
 import googleImg from '../assets/google-icon.svg'
+import { Button } from '../components/Button'
 
 export function Home() {
 
@@ -88,15 +89,15 @@ export function Home() {
         <div className=" flex items-center  mt-5 mx-auto text-gray mb-6" >
           or enter a room
         </div>
-        <form onSubmit={handlejoinRoom} className="flex content-center items-center justify-center " >
+        <form onSubmit={handlejoinRoom} className="flex content-center items-center justify-center flex-col" >
         <input 
           type="text" 
           placeholder="enter room code"
           onChange = {(event) => setRoomCode(event.target.value)}
           value={roomCode}
-          className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray w-10/12"
+          className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray w-10/12 mb-5"
         />
-          {/* <Button type="submit"> entrar na sala </Button> */}
+          <Button type="submit"> enter room </Button>
         </form>
       </div>
     </div>
