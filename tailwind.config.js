@@ -14,7 +14,16 @@ module.exports = {
         red: '#ea4335',
         purple: '#835afd',
         white: '#ffff',
+        black: {
+          light:'#737380',
+        },
+        pink: {
+          500: '#e559f9',
+        },
       },
+      fontFamily: {
+        poppins: ['Poppins']
+      }
   },
   variants: {
     extend: {},
