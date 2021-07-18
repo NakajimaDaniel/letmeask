@@ -86,7 +86,7 @@ export function Home() {
           <img src={googleImg} alt="google icon" className="flex pr-2" />
           Login with Google
         </button> 
-        <div className=" flex items-center  mt-5 mx-auto text-gray mb-6" >
+        <div className=" flex items-center  mt-5 mx-auto text-gray-500 mb-6" >
           or enter a room
         </div>
         <form onSubmit={handlejoinRoom} className="flex content-center items-center justify-center flex-col" >
@@ -95,7 +95,7 @@ export function Home() {
           placeholder="enter room code"
           onChange = {(event) => setRoomCode(event.target.value)}
           value={roomCode}
-          className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray w-10/12 mb-5"
+          className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray-500 w-10/12 mb-5"
         />
           <Button type="submit"> enter room </Button>
         </form>
