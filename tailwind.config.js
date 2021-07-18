@@ -1,6 +1,6 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
    
       screens: {
@@ -10,13 +10,14 @@ module.exports = {
         xl: '1440px',
       },
       colors: {
-        gray: '#a8a8b3',
+        gray: {
+          700: '#737380',
+          500: '#a8a8b3',
+          400: '#e2e2e2',
+        },
         red: '#ea4335',
         purple: '#835afd',
         white: '#ffff',
-        black: {
-          light:'#737380',
-        },
         pink: {
           500: '#e559f9',
         },
