@@ -69,11 +69,11 @@ export function NewRoom() {
             placeholder="room name"
             onChange = {event => setNewRoom(event.target.value)}
             value={newRoom}
-            className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray w-10/12 mb-5"
+            className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray-500 w-10/12 mb-5"
           />
           <Button type="submit"> Create room </Button>
         </form>
-        <p className="flex justify-center mt-2 text-black-light"> 
+        <p className="flex justify-center mt-2 text-gray-700"> 
           Want to join an existing room ? <Link to="/" className="pl-1 text-pink-500">Click here</Link>
         </p>
       </div>
