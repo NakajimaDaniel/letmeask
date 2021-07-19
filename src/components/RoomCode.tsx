@@ -13,12 +13,25 @@ export function RoomCode(props: roomCodeProps) {
   }
 
   return (
-    <button className="room-code" onClick={copyRoomCodeToClipboard} >
-      <div>
-        <img src={copyImg} alt="copiar" />
+    // <button className="room-code" onClick={copyRoomCodeToClipboard} >
+    //   <div>
+    //     <img src={copyImg} alt="copiar" />
+    //   </div>
+
+    //   <span>{props.code} </span>
+    // </button>
+    
+    <button className="flex items-between border border-purple rounded-md bg-white "   onClick={copyRoomCodeToClipboard} >
+      <div className="flex items-between">
+      <div className=" flex items-center md:p-3 bg-purple">
+        <img src={copyImg} alt="copy" />
       </div>
 
-      <span>{props.code} </span>
+      <span className="flex items-center pl-3 pr-3 w-20 break-all  md:break-normal md:w-full md:overflow-clip " >
+        { props.code }
+      </span>
+      </div>
     </button>
+
   )
 }
