@@ -63,13 +63,13 @@ export function NewRoom() {
       <div className="flex w-full max-w-sm flex-col">
         <img src={logoImg}  className="mx-auto" /> 
         <h2 className="mb-5 font-poppins font-semibold text-2xl flex justify-center mt-10" >Create new room</h2>
-        <form onSubmit={handleCreateRoom} className="flex content-center items-center justify-center flex-col" >
+        <form onSubmit={handleCreateRoom} className="flex content-center items-center justify-center flex-col w-10/12 mx-auto" >
           <input 
             type="text" 
             placeholder="room name"
             onChange = {event => setNewRoom(event.target.value)}
             value={newRoom}
-            className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray-500 w-10/12 mb-5"
+            className=" rounded-md pt-3 pb-3 pl-6 pr-6 border border-gray-500 w-full mb-5"
           />
           <Button type="submit"> Create room </Button>
         </form>
