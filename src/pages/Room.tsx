@@ -65,6 +65,7 @@ export function Room() {
 
   }
 
+
   return (
     // <div id="page-room">
     //   <header>
@@ -129,11 +130,37 @@ export function Room() {
         </div>
       </header>
 
-      <main className="w-full" >
-        <div className="flex items-center mt-10 ml-60 mr-60 " >
-          <h1 className="text-black-400 font-poppins text-2xl" >{title}</h1>
+      <main className="w-full mt-10 lg:pl-60 lg:pr-60 md:pl-20 md:pr-20 sm:pl-10 sm:pr-10 pl-5 pr-5 max-w-7xl mx-auto" >
+
+        <div className="flex items-center pb-5" >
+          <h1 className="text-black-400 font-poppins text-2xl dark:text-white ">{title}</h1>
           {questions.length > 0 && <span className="ml-10 bg-pink border-full text-white " > {questions.length} pergunta(s)</span>}
         </div>
+
+        <form className="flex  flex-col"  onSubmit={handleSendQuestion} >
+          <textarea className="p-4 rounded-lg bg-white shadow resize-y w-full dark:bg-gray-600"
+            placeholder="ask a question ..." onChange={event => setNewQuestion(event.target.value)} value={newQuestion}
+          /> 
+          
+          <div className="flex justify-between mt-4"  >
+            { user ? (
+              <div className="flex items-center">
+                <img className="w-8 h-8 rounded-full"
+                  src={user.avatar} alt={user.name} 
+                />
+                <span className="ml-2 text-black-400 dark:text-white" >{user.name}</span>
+              </div>
+              ):(
+              <span className="text-gray-700 " >para enviar uma pergunta, <button  className="text-purple" >faça seu login</button> </span>
+            ) }
+            <div className="max-w-sm" >
+              <Button type="submit" disabled={!user}>Enviar pergunta </Button>            
+            </div>
+            
+          </div>
+
+        </form>
+
       </main>
 
 
