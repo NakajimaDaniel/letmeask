@@ -1,6 +1,6 @@
 
 import { ReactNode } from 'react';
-import '../styles/question.scss'
+// import '../styles/question.scss'
 
 type QuestionProps = {
   content: string,
@@ -16,12 +16,13 @@ type QuestionProps = {
 
 export function Question({ content, author, children, isHighlighted = false, isAnswered = false }: QuestionProps) {
   return (
-    <div className={`question ${isAnswered ? 'answered'  : '' } ${isHighlighted && !isAnswered ? 'hightlighted' : '' }`}>
-      <p>{content}</p>
-      <footer>
-        <div className="user-info">
-          <img src={author.avatar} alt={author.name} />
-          <span>{author.name}</span>
+    <div className={`question ${isAnswered ? 'answered'  : '' } ${isHighlighted && !isAnswered ? 'hightlighted' : '' } bg-gray-200 rounded-lg p-6 mt-2 shadow-md mb-5`}>
+      <p  className="text-black-400" >{content}</p>
+      <footer  className="flex justify-between items-center mt-8" >
+        <div className="flex items-center">
+          <img className="w-8 h-8 rounded-full "
+            src={author.avatar} alt={author.name} />
+          <span className="ml-2  text-gray-700"  >{author.name}</span>
         </div>
         <div>
           {children}
