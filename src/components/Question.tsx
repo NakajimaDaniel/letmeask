@@ -16,7 +16,7 @@ type QuestionProps = {
 
 export function Question({ content, author, children, isHighlighted = false, isAnswered = false }: QuestionProps) {
   return (
-    <div className={`question ${isAnswered ? 'answered'  : '' } ${isHighlighted && !isAnswered ? 'hightlighted' : '' } bg-gray-200 rounded-lg p-6 mt-2 shadow-md mb-5 dark:bg-gray-600`}>
+    <div className={`question ${isAnswered ? 'bg-pink-100 border border-purple dark:bg-pink-700 border border-pink-500'  : '' } ${isHighlighted && !isAnswered ? 'bg-gray-400 dark:bg-pink-900' : '' } bg-gray-200 rounded-lg p-6 mt-2 shadow-md mb-5 dark:bg-gray-600`}>
       <p  className="text-black-400 dark:text-gray-400" >{content}</p>
       <footer  className="flex justify-between items-center mt-8" >
         <div className="flex items-center">
