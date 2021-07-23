@@ -207,7 +207,11 @@ export function AdminRoom() {
             <p className="pb-3 pt-5 text-black-500 font-bold text-2xl">Delete Question</p>
             <p className="text-gray-700 " >Are you sure want delete this question?</p>
             <div className="flex flex-row gap-3 mt-10">
-              <button className="bg-gray-400 rounded-md w-28 text-gray-500 justify-center h-10">Cancel</button>
+              <button className="bg-gray-400 rounded-md w-28 text-gray-500 justify-center h-10"
+                type="button" onClick={ closeDeleteModal }
+              >
+                Cancel
+              </button>
               <button className="bg-red w-28 rounded-md text-white"
                 type="button" onClick={() => handleDeleteQuestion(question.id)}
               >
