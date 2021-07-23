@@ -7,6 +7,7 @@ import logoImg from '../assets/logo.svg'
 import checkImg from '../assets/check.svg'
 import answerImg from '../assets/answer.svg'
 import logoImgDarkMode from '../assets/logo-darkmode.svg'
+import deleteX from '../assets/delete-x.svg'
 
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
@@ -16,20 +17,21 @@ import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
+import Modal from 'react-modal'
+
 // import '../styles/room.scss'
 
 type roomParams = {
   id: string;
 }
 
-
-
-
 export function AdminRoom() {
 
   const history = useHistory();
   const { user } = useAuth();
   const { theme } = useTheme();
+  const [DeleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+
 
   const params = useParams<roomParams>();
   const roomId = params.id;
@@ -62,6 +64,16 @@ export function AdminRoom() {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
 
     }
+  }
+
+
+  function openDeleteModal() {
+    setDeleteModalIsOpen(true);
+  }
+
+
+  function closeDeleteModal() {
+    setDeleteModalIsOpen(false);
   }
 
   return (
@@ -137,14 +149,85 @@ export function AdminRoom() {
       <div  className="mt-10" >
         {questions.map(question => {
           return (
+          <>
           <Question key={question.id} content={question.content} author={question.author} isAnswered={question.isAnswered} isHighlighted={question.isHighlighted} >
+            {!question.isAnswered && (
+              <>
+                <button className="pr-3"
+                  type="button" onClick={() => handleCheckQuestionasAnswered(question.id)} 
+                >
+                  <img src={checkImg} alt="check question" />
+                </button>
+                                    
+                <button className="pr-3"
+                  type="button" onClick={() => handleHighlightQuestion(question.id)} 
+                >
+                  <img src={answerImg} alt="question answered" />
+                </button>
+              </>
+            )}
+            <button type="button" onClick={openDeleteModal} >
+            <img src={deleteImg} alt="delete image" />
+            </button>
+          </Question>
 
-          </Question> 
+          <Modal
+          isOpen={DeleteModalIsOpen}
+          onRequestClose={closeDeleteModal}
+          style={{
+            overlay: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.15)'
+            },
+            content: {
+              margin: 'auto',
+              background: '#fff',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '4px',
+              outline: 'none',
+              width: '30rem',
+              height: '20rem',
+              border: 'none',
+              position: 'absolute',
+  
+            }
+          }}
+          contentLabel="Delete Question Modal"
+        >
+          <div className="flex flex-col items-center justify-center mx-auto">
+
+            <img className="mt-5"
+              src={deleteX} alt="x delete question" 
+            />
+            <p className="pb-3 pt-5 text-black-500 font-bold text-2xl">Delete Question</p>
+            <p className="text-gray-700 " >Are you sure want delete this question?</p>
+            <div className="flex flex-row gap-3 mt-10">
+              <button className="bg-gray-400 rounded-md w-28 text-gray-500 justify-center h-10">Cancel</button>
+              <button className="bg-red w-28 rounded-md text-white"
+                type="button" onClick={() => handleDeleteQuestion(question.id)}
+              >
+                Yes, delete
+              </button>
+            </div>
+
+          </div>
+  
+  
+        </Modal>          
+          </>
         )
-        })}          
+        })}
+
       </div>
 
     </main>
+
+
 
 
   </div>
