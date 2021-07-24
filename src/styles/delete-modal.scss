@@ -1,0 +1,35 @@
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.delete-modal {
+  margin: 0 auto;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  width: 30rem;
+  height: 20rem;
+  border: none;
+  position: relative;
+  top: 30%;
+  display: flex;
+  justify-items: center;
+}
+
+@media screen and (max-width: 760px) {
+
+  .delete-modal {
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    justify-content:center;
+  }
+
+}

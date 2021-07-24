@@ -20,6 +20,7 @@ import { useTheme } from '../hooks/useTheme'
 import Modal from 'react-modal'
 
 // import '../styles/room.scss'
+import '../styles/delete-modal.scss'
 
 type roomParams = {
   id: string;
@@ -175,28 +176,30 @@ export function AdminRoom() {
           isOpen={DeleteModalIsOpen}
           onRequestClose={closeDeleteModal}
           style={{
-            overlay: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.15)'
-            },
-            content: {
-              margin: 'auto',
-              background: '#fff',
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-              borderRadius: '4px',
-              outline: 'none',
-              width: '30rem',
-              height: '20rem',
-              border: 'none',
-              position: 'absolute',
+            // overlay: {
+            //   position: 'fixed',
+            //   top: 0,
+            //   left: 0,
+            //   right: 0,
+            //   bottom: 0,
+            //   backgroundColor: 'rgba(0, 0, 0, 0.15)'
+            // },
+            // content: {
+            //   margin: 'auto',
+            //   background: '#fff',
+            //   overflow: 'auto',
+            //   WebkitOverflowScrolling: 'touch',
+            //   borderRadius: '4px',
+            //   outline: 'none',
+            //   width: '30rem',
+            //   height: '20rem',
+            //   border: 'none',
+            //   position: 'absolute',
   
-            }
+            // }
           }}
+          className="delete-modal"
+          overlayClassName="delete-modal-overlay"
           contentLabel="Delete Question Modal"
         >
           <div className="flex flex-col items-center justify-center mx-auto">
