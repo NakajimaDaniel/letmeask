@@ -1,6 +1,6 @@
 
 ## LetMeAsk
-
+<img src="./src/assets/logo.svg" />
 
 ## Technologies
  - ReactJs
