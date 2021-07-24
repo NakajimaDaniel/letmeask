@@ -13,7 +13,7 @@ export const ThemeContext = createContext({} as themeContextType)
 
 export function ThemeContextProvider(props: themeContextProviderProps) {
 
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = useState('light');
 
   const root = window.document.documentElement;
 
