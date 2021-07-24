@@ -127,9 +127,11 @@ export function AdminRoom() {
     <div className=""> 
     <header className="p-5 border-b border-gray-400  dark:border-gray-700    sm:pl-5 md:pl-20" >
       <div className="flex my-auto items-center justify-between">
-        <img src={theme ==='light'? logoImg : logoImgDarkMode} alt="letmeask" className=" h-12 max-w-25" />
+        <a href="/">
+          <img src={theme ==='light'? logoImg : logoImgDarkMode} alt="letmeask" className=" h-12 max-w-25" />
+        </a>
         <div className="flex flex-row items-center gap-4">
-          <div>
+          <div className="flex flex-col gap-3 items-center">
             <RoomCode code={roomId} />
             <Button isOutlined onClick={() => handleEndRoom()}>Close Room</Button>
           </div>
