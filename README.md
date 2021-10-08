@@ -12,6 +12,11 @@
 </div>
  
  
+## About
+
+Create room, share and create questions. Its possible to login with your google account. 
+The user, who created the room (admin) can highlight, mark as answered and also delete a question.
+
 ## Technologies
  - ReactJs
  - Firebase
