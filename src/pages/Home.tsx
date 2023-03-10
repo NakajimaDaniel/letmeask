@@ -18,8 +18,9 @@ export function Home() {
     if (!user) {
       await signInWithGoogle();
     }*/
-
-  signInWithGoogle();
+    if (!user) {
+      signInWithGoogle();
+    }
     history.push('/rooms/new');
   }
 
