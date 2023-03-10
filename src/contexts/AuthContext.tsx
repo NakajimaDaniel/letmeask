@@ -69,7 +69,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         })
       }
 
-    console.log('button')
+    console.log(user)
   }
 
 
