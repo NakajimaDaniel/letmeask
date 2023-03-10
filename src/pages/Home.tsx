@@ -18,9 +18,9 @@ export function Home() {
     if (!user) {
       await signInWithGoogle();
     }*/
-    if (!user) {
-      signInWithGoogle();
-    }
+    
+    await signInWithGoogle();
+    
     history.push('/rooms/new');
   }
 
