@@ -34,10 +34,10 @@ export function Room() {
     if (newQuestion.trim() === '') {
       return;
     }
-
+/*
     if (!user) {
       throw new Error('you must be logged in')
-    }
+    } */
 
     const question = {
       content: newQuestion,
