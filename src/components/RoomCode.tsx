@@ -1,6 +1,5 @@
 
 import copyImg from '../assets/copy.svg';
-// import '../styles/room-code.scss';
 
 type roomCodeProps = {
   code: string;
@@ -13,14 +12,6 @@ export function RoomCode(props: roomCodeProps) {
   }
 
   return (
-    // <button className="room-code" onClick={copyRoomCodeToClipboard} >
-    //   <div>
-    //     <img src={copyImg} alt="copiar" />
-    //   </div>
-
-    //   <span>{props.code} </span>
-    // </button>
-    
     <button className="flex items-between border border-purple rounded-md bg-white dark:bg-black-500"   onClick={copyRoomCodeToClipboard} >
       <div className="flex items-between">
       <div className=" flex items-center md:p-3 bg-purple">
@@ -32,6 +23,5 @@ export function RoomCode(props: roomCodeProps) {
       </span>
       </div>
     </button>
-
   )
 }

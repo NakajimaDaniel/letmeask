@@ -29,15 +29,12 @@ type firebaseQuestions = Record<string, {
 
 }>
 
-
 export function useRoom(roomId: string) {
 
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState('');
 
-
-  
   useEffect(() => { 
     const roomRef = database.ref(`rooms/${roomId}`);
 

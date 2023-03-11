@@ -18,8 +18,6 @@ import { database } from '../services/firebase'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
 import Modal from 'react-modal'
-
-// import '../styles/room.scss'
 import '../styles/delete-modal.scss'
 
 type roomParams = {
@@ -29,16 +27,13 @@ type roomParams = {
 export function AdminRoom() {
 
   const history = useHistory();
-  const { user } = useAuth();
   const { theme } = useTheme();
   const [DeleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-
 
   const params = useParams<roomParams>();
   const roomId = params.id;
   const [newQuestion, setNewQuestion] = useState('');
   const { title, questions } = useRoom(roomId);
-
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -67,62 +62,15 @@ export function AdminRoom() {
     }
   }
 
-
   function openDeleteModal() {
     setDeleteModalIsOpen(true);
   }
-
 
   function closeDeleteModal() {
     setDeleteModalIsOpen(false);
   }
 
   return (
-    // <div id="page-room">
-    //   <header>
-    //     <div className="content">
-    //       <img src={LogoImg} alt="letmeask" />
-    //       <div>
-    //         <RoomCode code={roomId} />
-    //         <Button isOutlined onClick={() => handleEndRoom()} >Encerrar sala</Button>
-    //       </div>
-    //     </div>
-    //   </header>
-    //   <main>
-    //     <div className="room-title">
-    //       <h1>{title}</h1>
-    //       {questions.length > 0 && <span> {questions.length} pergunta(s)</span>}
-
-    //     </div>
-
-        
-    //     <div className="question-list">
-    //       {questions.map(question => {
-    //         return (
-    //           <Question key={question.id} content={question.content} author={question.author} isAnswered={question.isAnswered} isHighlighted={question.isHighlighted} >
-
-    //             {!question.isAnswered && (
-    //               <>
-    //                 <button type="button" onClick={() => handleCheckQuestionasAnswered(question.id)} >
-    //                   <img src={checkImg} alt="marcar pergunta respondida" />
-    //                 </button>
-                                    
-    //                 <button type="button" onClick={() => handleHighlightQuestion(question.id)} >
-    //                   <img src={answerImg} alt="dar destaque a pergunta" />
-    //                 </button>
-    //               </>
-    //             )}
-    //             <button type="button" onClick={() => handleDeleteQuestion(question.id)} >
-    //               <img src={deleteImg} alt="delete image" />
-    //             </button>
-    //           </Question> 
-    //         )
-    //       })}
-    //     </div>
-
-    //   </main>
-
-    // </div>
 
     <div className=""> 
     <header className="p-5 border-b border-gray-400  dark:border-gray-700    sm:pl-5 md:pl-20" >
@@ -226,19 +174,12 @@ export function AdminRoom() {
 
           </div>
   
-  
         </Modal>          
           </>
         )
         })}
-
       </div>
-
     </main>
-
-
-
-
   </div>
   )
 }

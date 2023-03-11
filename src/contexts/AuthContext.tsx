@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react"
 
-import {firebase, auth} from '../services/firebase'
-
+import { firebase } from '../services/firebase'
 
 type User = {
   id: string;
@@ -19,7 +18,6 @@ type AuthContextProviderProps = {
 }
 
 export const AuthContext = createContext({} as AuthContextType)
-
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
 
@@ -54,7 +52,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     const result = await firebase.auth().signInWithPopup(provider);
 
-
       if (result.user) {
         const { displayName, photoURL, uid } = result.user
 
@@ -69,9 +66,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         })
       }
 
-
   }
-
 
   return (
     <AuthContext.Provider value={{user, signInWithGoogle}}>
