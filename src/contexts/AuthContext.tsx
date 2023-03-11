@@ -22,7 +22,7 @@ export const AuthContext = createContext({} as AuthContextType)
 export function AuthContextProvider(props: AuthContextProviderProps) {
 
   const [user, setUser] = useState<User>();
-
+  
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -45,27 +45,22 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
       unsubscribe();
     }
 
-  }, [])
+  }, []) 
 
-  async function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+   async function signInWithGoogle() {
 
-    const result = await firebase.auth().signInWithPopup(provider);
-
-      if (result.user) {
-        const { displayName, photoURL, uid } = result.user
-
-        if (!displayName || !photoURL) {
-          throw new Error ('Missing information from Google Account.');
-        }
-
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL, 
-        })
-      }
-
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      var credential = result.credential;
+      var user = result.user;
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
   }
 
   return (

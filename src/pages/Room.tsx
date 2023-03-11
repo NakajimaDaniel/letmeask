@@ -19,7 +19,7 @@ type roomParams = {
 
 export function Room() {
 
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<roomParams>();
   const roomId = params.id;
   const [newQuestion, setNewQuestion] = useState('');
@@ -32,10 +32,7 @@ export function Room() {
       return;
     }
 
-    if (!user) {
-      throw new Error('you must be logged in')
-    }
-
+    if (user) {
     const question = {
       content: newQuestion,
       author: {
@@ -45,11 +42,11 @@ export function Room() {
       isHighlighted: false,
       isAnswered: false,
     }
-
     await database.ref(`rooms/${roomId}/questions`).push(question);
     setNewQuestion('');
   }
 
+  }
   async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
     if (likeId) {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove();
@@ -60,9 +57,16 @@ export function Room() {
       })
     }
   }
+ 
+  async function handleSignIn() {
+    if (!user) {
+      await signInWithGoogle();
+    }
+    
+  }
 
   return (
- 
+
     <div className=""> 
       <header className="p-5 border-b border-gray-400  dark:border-gray-700    sm:pl-5 md:pl-20" >
         <div className="flex my-auto items-center justify-between">
@@ -94,7 +98,7 @@ export function Room() {
                 <span className="ml-2 text-black-400 dark:text-white" >{user.name}</span>
               </div>
               ):(
-              <span className="text-gray-700 " >to submit your question, <button  className="text-purple" >login with google</button> </span>
+              <span className="text-gray-700 " >to submit your question, <button  className="text-purple" onClick={() => handleSignIn()} >login with google</button> </span>
             ) }
             <div className="max-w-sm" >
               <Button type="submit" disabled={!user}>Send </Button>            
