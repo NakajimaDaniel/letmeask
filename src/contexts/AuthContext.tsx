@@ -67,19 +67,18 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
           name: displayName,
           avatar: photoURL, 
         })
-      }*/
+      }*/ 
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
-      /** @type {firebase.auth.OAuthCredential} */
+
       var credential = result.credential;
 
       // The signed-in user info.
       var user = result.user;
 
-      // IdP data available in result.additionalUserInfo.profile.
-        // ...
+
     }).catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;

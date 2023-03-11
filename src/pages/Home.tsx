@@ -19,9 +19,9 @@ export function Home() {
       await signInWithGoogle();
     }*/
     
-    signInWithGoogle();
-    
-    history.push('/rooms/new');
+    await signInWithGoogle();
+    console.log(user);
+    //history.push('/rooms/new');
   }
 
   async function handlejoinRoom(event: FormEvent) {
