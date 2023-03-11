@@ -49,11 +49,10 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   }, [])
 
-  async function signInWithGoogle() {
+   async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
-    const result = await firebase.auth().signInWithPopup(provider);
-
+    const result =  await firebase.auth().signInWithPopup(provider);
 
       if (result.user) {
         const { displayName, photoURL, uid } = result.user
@@ -69,7 +68,6 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         })
       }
 
-    console.log(user)
   }
 
 
