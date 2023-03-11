@@ -38,7 +38,7 @@ export function Room() {
     if (!user) {
       throw new Error('you must be logged in')
     } */
-
+    if (user) {
     const question = {
       content: newQuestion,
       author: {
@@ -48,9 +48,11 @@ export function Room() {
       isHighlighted: false,
       isAnswered: false,
     }
-
     await database.ref(`rooms/${roomId}/questions`).push(question);
     setNewQuestion('');
+  }
+
+
   }
 
   async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
