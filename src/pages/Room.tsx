@@ -71,7 +71,7 @@ export function Room() {
       await signInWithGoogle();
     }
     
-    window.location.reload();
+    //window.location.reload();
   }
 
 
