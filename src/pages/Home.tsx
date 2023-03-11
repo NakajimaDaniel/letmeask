@@ -14,12 +14,11 @@ export function Home() {
   const [roomCode, setRoomCode] = useState('')
 
   async function handleCreateRoom() {
-  /*
+  
     if (!user) {
       await signInWithGoogle();
-    }*/
-
-  signInWithGoogle();
+    }
+    
     history.push('/rooms/new');
   }
 
