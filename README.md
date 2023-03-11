@@ -21,6 +21,7 @@ The user, who created the room (admin) can highlight, mark as answered and also 
  - ReactJs
  - Firebase
  - Tailwind CSS
+ - TypeScript
 
 ## Features
 
